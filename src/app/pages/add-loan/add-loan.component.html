@@ -1,97 +1,157 @@
 <div class="modal modal-form" *ngIf="isOpen">
-    <div class="modal-dialog modal-dialog-form" role="dialog">
-      <div class="modal-content modal-content-form">
-        <div class="modal-header">
-          <button class="close" type="button" (click)="closeLoan()">
-            <cds-icon shape="window-close"></cds-icon>
-          </button>
-          <h3 class="modal-title modal-title-form">Кредит</h3>
-        </div>
-  
-        <div class="modal-body">
-            <form #loanForm="ngForm"> 
-            <div class="form-control">
-                <label for="loanTypeName">Тип кредиту *</label>
-                <div class="clr-control-container">
-                    <select [(ngModel)]="newLoan.loanType.loanTypeName" name="loanTypeName" required #loanTypeName="ngModel">
-                        <option value="" disabled>Оберіть тип кредиту</option>
-                        <option *ngFor="let name of loanTypeNames" [ngValue]="name">{{ name }}</option>
-                    </select>
-                    <div *ngIf="loanTypeName.invalid && (loanTypeName.dirty || loanTypeName.touched)" class="clr-control-error"> 
-                        Обов'язкове поле!
-                    </div>
-                </div>
-            </div>   
-    
-            <div class="form-control">
-                <label for="conditions">Умови *</label>
-                <div class="clr-control-container">
-                  <div class="label-radio">
-                    <label>
-                      <input class="input-radio" type="radio" name="conditions" [(ngModel)]="newLoan.loanType.conditions"
-                        [value]="loanTypeConditions[0]" required #conditions="ngModel" />
-                      {{ loanTypeConditions[0] }}
-                    </label>
-                    <label>
-                      <input class="input-radio" type="radio" name="conditions" [(ngModel)]="newLoan.loanType.conditions"
-                        [value]="loanTypeConditions[1]" required />
-                      {{ loanTypeConditions[1] }}
-                    </label>
-                  </div>
-                  <div *ngIf="conditions.invalid && conditions.touched" class="clr-control-error">
-                    Обов'язкове поле!
-                  </div>
+  <div class="modal-dialog modal-dialog-form" role="dialog">
+    <div class="modal-content modal-content-form">
+      <div class="modal-header">
+        <button class="close" type="button" (click)="closeLoan()">
+          <cds-icon shape="window-close"></cds-icon>
+        </button>
+        <h3 class="modal-title modal-title-form">Кредит</h3>
+      </div>
+
+      <div class="modal-body">
+        <form #loanForm="ngForm">
+          <div class="form-control">
+            <label for="loanTypeName">Тип кредиту *</label>
+            <div class="clr-control-container">
+              <select
+                [(ngModel)]="newLoan.loanType.loanTypeName"
+                name="loanTypeName"
+                required
+                #loanTypeName="ngModel"
+              >
+                <option value="" disabled>Оберіть тип кредиту</option>
+                <option *ngFor="let name of loanTypeNames" [ngValue]="name">
+                  {{ name }}
+                </option>
+              </select>
+              <div
+                *ngIf="
+                  loanTypeName.invalid &&
+                  (loanTypeName.dirty || loanTypeName.touched)
+                "
+                class="clr-control-error"
+              >
+                Обов'язкове поле!
+              </div>
+            </div>
+          </div>
+
+          <div class="form-control">
+            <label for="conditions">Умови *</label>
+            <div class="clr-control-container">
+              <div class="label-radio">
+                <label>
+                  <input
+                    class="input-radio"
+                    type="radio"
+                    name="conditions"
+                    [(ngModel)]="newLoan.loanType.conditions"
+                    [value]="loanTypeConditions[0]"
+                    required
+                    #conditions="ngModel"
+                  />
+                  {{ loanTypeConditions[0] }}
+                </label>
+                <label>
+                  <input
+                    class="input-radio"
+                    type="radio"
+                    name="conditions"
+                    [(ngModel)]="newLoan.loanType.conditions"
+                    [value]="loanTypeConditions[1]"
+                    required
+                  />
+                  {{ loanTypeConditions[1] }}
+                </label>
+              </div>
+              <div
+                *ngIf="conditions.invalid && conditions.touched"
+                class="clr-control-error"
+              >
+                Обов'язкове поле!
+              </div>
+            </div>
+          </div>
+
+          <div class="form-control">
+            <label for="term">Термін *</label>
+            <div class="clr-control-container">
+              <div class="clr-input-wrapper">
+                <input
+                  clrInput
+                  id="term"
+                  name="term"
+                  [(ngModel)]="newLoan.loanType.term"
+                  placeholder="12"
+                  type="number"
+                  required
+                  #term="ngModel"
+                  min="1"
+                />
+              </div>
+              <div
+                *ngIf="term.invalid && (term.dirty || term.touched)"
+                class="clr-control-error"
+              >
+                <div *ngIf="term.errors?.['required']">Обов'язкове поле!</div>
+                <div *ngIf="term.errors?.['min']">
+                  Значення має бути більше 0!
                 </div>
               </div>
-              
-    
-            <div class="form-control">
-                <label for="term">Термін *</label>
-                <div class="clr-control-container">
-                    <div class="clr-input-wrapper">
-                        <input clrInput id="term" name="term" [(ngModel)]="newLoan.loanType.term" placeholder="12" type="number" required #term="ngModel" min="1"/>
-                    </div>
-                    <div *ngIf="term.invalid && (term.dirty || term.touched)" class="clr-control-error"> 
-                        <div *ngIf="term.errors?.['required']">
-                            Обов'язкове поле!
-                        </div>
-                        <div *ngIf="term.errors?.['min']">
-                            Значення має бути більше 0!
-                        </div>
-                    </div>
-                </div>
-            </div>   
-    
-            <div class="form-control">
-                <label for="loanAmount">Сума *</label>
-                <div class="clr-control-container">
-                    <div class="clr-input-wrapper">
-                        <input clrInput id="loanAmount" name="loanAmount" [(ngModel)]="newLoan.amount" placeholder="500000" type="number"  required #loanAmount="ngModel" min="1"/>
-                    </div>
-                    <div *ngIf="loanAmount.invalid && (loanAmount.dirty || loanAmount.touched)" class="clr-control-error">
-                        <div *ngIf="loanAmount.errors?.['required']">
-                            Обов'язкове поле!
-                        </div>
-                        <div *ngIf="loanAmount.errors?.['min']">
-                            Значення має бути більше 0!
-                        </div>
-                    </div>
-                 </div>   
-            </div>   
-            <div *ngIf="errorMessage"  class="clr-control-error">
-              {{ errorMessage }}
-          </div>     
-    
-    
-  
-            <div class="modal-footer">
-            <button class="button-navigate" (click)="closeLoan()">Скасувати</button>
-            <button class="button-navigate" [disabled]="loanForm.invalid" (click)="submitLoan()">Зберегти</button>
             </div>
+          </div>
+
+          <div class="form-control">
+            <label for="loanAmount">Сума *</label>
+            <div class="clr-control-container">
+              <div class="clr-input-wrapper">
+                <input
+                  clrInput
+                  id="loanAmount"
+                  name="loanAmount"
+                  [(ngModel)]="newLoan.amount"
+                  placeholder="500000"
+                  type="number"
+                  required
+                  #loanAmount="ngModel"
+                  min="1"
+                />
+              </div>
+              <div
+                *ngIf="
+                  loanAmount.invalid && (loanAmount.dirty || loanAmount.touched)
+                "
+                class="clr-control-error"
+              >
+                <div *ngIf="loanAmount.errors?.['required']">
+                  Обов'язкове поле!
+                </div>
+                <div *ngIf="loanAmount.errors?.['min']">
+                  Значення має бути більше 0!
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="errorMessage" class="clr-control-error">
+            {{ errorMessage }}
+          </div>
+
+          <div class="modal-footer">
+            <button class="button-navigate" (click)="closeLoan()">
+              Скасувати
+            </button>
+            <button
+              class="button-navigate"
+              [disabled]="loanForm.invalid"
+              (click)="submitLoan()"
+            >
+              Зберегти
+            </button>
+          </div>
         </form>
       </div>
     </div>
   </div>
-  
+
   <div class="modal-backdrop" *ngIf="isOpen" aria-hidden="true"></div>
-  
+</div>

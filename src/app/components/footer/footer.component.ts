@@ -1,6 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { ClarityModule } from '@clr/angular'; 
-
+import { ClarityModule } from '@clr/angular';
 
 @Component({
   selector: 'app-footer',
@@ -10,6 +9,4 @@ import { ClarityModule } from '@clr/angular';
   styleUrl: './footer.component.css',
   encapsulation: ViewEncapsulation.None,
 })
-export class FooterComponent {
-
-}
+export class FooterComponent {}

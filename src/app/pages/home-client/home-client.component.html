@@ -1,71 +1,121 @@
 <app-header></app-header>
 
 <div class="container">
-    <div *ngIf="client" class="client-item"> 
-        <div class="info-client">
-            <h2> <strong>{{ client?.clientName }} </strong></h2>
-            <p><strong>Тип Власництва:</strong> {{ client?.ownershipType }}</p>
-            <p><strong>Адрес:</strong> {{ client?.address }}</p>
-            <p><strong>Мобільний:</strong> {{ client?.phone }}</p>
-            <p><strong>Контактна особа:</strong> {{ client?.contactPerson }}</p>
-            <p><strong>Кредитів:</strong> {{ client?.loans?.length }}</p>
-            <button class="button-add-loan" (click)="openModalLoan()">Додати Кредит</button>
-
-        </div>
-
-        <div class="info-loan">
-            <h2><strong>Кредити:</strong></h2>
-            <div >
-                <ul *ngIf="client?.loans && client.loans.length > 0" class="loan-component" >
-                    <li *ngFor="let loan of client.loans" [ngClass]="{ 'done-status': loan.status === 'Виплачено' }" class="loan-component-info">
-                        <div *ngIf="loan">
-                            <p><strong>Тип кредиту: </strong>{{ loan?.loanType?.loanTypeName }}</p>
-                            <p><strong>Умова: </strong>{{ loan?.loanType?.conditions }}</p>
-                            <p><strong>Початкова сума: </strong>{{ loan?.amount }} грн</p>
-                            <p><strong>Відсоток: </strong>{{ loan?.loanType?.interestRate }} %</p>
-                            <p><strong>Дата початку: </strong>{{ loan?.issueDate | date: 'yyyy-MM-dd' }}</p>
-                            <p><strong>Дата кінця: </strong>{{ loan?.dueDate | date: 'yyyy-MM-dd' }}</p>                            
-                            <p><strong>Статус: </strong>{{ loan?.status }}</p>
-                            <p><strong>Всього: </strong>{{ loan?.totalLoan }} грн</p>           
-                            <p><strong>До сплати: </strong>{{ loan?.payable }} грн</p>
-                        </div>
-                        <p><strong>Платежі:</strong></p>
-                        <div class="info-payments" *ngIf="loan.payments && loan.payments.length > 0">
-                            <ul>
-                                <li *ngFor="let payments of loan.payments">
-                                    <div *ngIf="payments" class="payments-p">
-                                        <p><strong>Оплата: </strong>{{payments.date | date: 'yyyy-MM-dd'}}</p>
-                                        <p><strong>Сума: </strong>{{payments.amount}}</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <p><strong>Штрафи:</strong></p>
-                        <div class="info-penalties" *ngIf="loan.penalties && loan.penalties.length > 0">
-                            <ul>
-                                <li *ngFor="let penalties of loan.penalties">
-                                    <div *ngIf="penalties" class="penalties-p">
-                                        <p><strong>Штраф: </strong>{{penalties.date | date: 'yyyy-MM-dd'}}</p>
-                                        <p><strong>Сума: </strong>{{penalties.amount}}</p>
-                                        <p><strong>Причина: </strong>{{penalties.reason}}</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <button class="button-pay" *ngIf="loan.status !== 'Виплачено'" (click)="openModalPay(loan._id || '')">Оплатити</button>  
-                        <button class="button-del" *ngIf="loan.status === 'Виплачено'" (click)="checkVisible(loan._id || '')">Видалити</button> 
-
-                    </li>
-                </ul>      
-            </div>
-                  
-        </div>
-
+  <div *ngIf="client" class="client-item">
+    <div class="info-client">
+      <h2>
+        <strong>{{ client?.clientName }} </strong>
+      </h2>
+      <p><strong>Тип Власництва:</strong> {{ client?.ownershipType }}</p>
+      <p><strong>Адрес:</strong> {{ client?.address }}</p>
+      <p><strong>Мобільний:</strong> {{ client?.phone }}</p>
+      <p><strong>Контактна особа:</strong> {{ client?.contactPerson }}</p>
+      <p><strong>Кредитів:</strong> {{ client?.loans?.length }}</p>
+      <button class="button-add-loan" (click)="openModalLoan()">
+        Додати Кредит
+      </button>
     </div>
 
-    <app-add-loan *ngIf="isModalOpenLoan" [isOpen]="isModalOpenLoan" (closeModalLoan)="closeModalLoan()"   (loanSubmitted)="onLoanAdded($event)"></app-add-loan>
-    <app-add-payment  *ngIf="isModalOpenPay"  [loanId]="loanIdForPayment"   [isOpenPay]="isModalOpenPay" (closeModalPay)="closeModalPay()"   (paySubmitted)="onPayAdded($event)"></app-add-payment>
+    <div class="info-loan">
+      <h2><strong>Кредити:</strong></h2>
+      <div>
+        <ul
+          *ngIf="client?.loans && client.loans.length > 0"
+          class="loan-component"
+        >
+          <li
+            *ngFor="let loan of client.loans"
+            [ngClass]="{ 'done-status': loan.status === 'Виплачено' }"
+            class="loan-component-info"
+          >
+            <div *ngIf="loan">
+              <p>
+                <strong>Тип кредиту: </strong>{{ loan?.loanType?.loanTypeName }}
+              </p>
+              <p><strong>Умова: </strong>{{ loan?.loanType?.conditions }}</p>
+              <p><strong>Початкова сума: </strong>{{ loan?.amount }} грн</p>
+              <p>
+                <strong>Відсоток: </strong>{{ loan?.loanType?.interestRate }} %
+              </p>
+              <p>
+                <strong>Дата початку: </strong
+                >{{ loan?.issueDate | date : "yyyy-MM-dd" }}
+              </p>
+              <p>
+                <strong>Дата кінця: </strong
+                >{{ loan?.dueDate | date : "yyyy-MM-dd" }}
+              </p>
+              <p><strong>Статус: </strong>{{ loan?.status }}</p>
+              <p><strong>Всього: </strong>{{ loan?.totalLoan }} грн</p>
+              <p><strong>До сплати: </strong>{{ loan?.payable }} грн</p>
+            </div>
+            <p><strong>Платежі:</strong></p>
+            <div
+              class="info-payments"
+              *ngIf="loan.payments && loan.payments.length > 0"
+            >
+              <ul>
+                <li *ngFor="let payments of loan.payments">
+                  <div *ngIf="payments" class="payments-p">
+                    <p>
+                      <strong>Оплата: </strong
+                      >{{ payments.date | date : "yyyy-MM-dd" }}
+                    </p>
+                    <p><strong>Сума: </strong>{{ payments.amount }}</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <p><strong>Штрафи:</strong></p>
+            <div
+              class="info-penalties"
+              *ngIf="loan.penalties && loan.penalties.length > 0"
+            >
+              <ul>
+                <li *ngFor="let penalties of loan.penalties">
+                  <div *ngIf="penalties" class="penalties-p">
+                    <p>
+                      <strong>Штраф: </strong
+                      >{{ penalties.date | date : "yyyy-MM-dd" }}
+                    </p>
+                    <p><strong>Сума: </strong>{{ penalties.amount }}</p>
+                    <p><strong>Причина: </strong>{{ penalties.reason }}</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <button
+              class="button-pay"
+              *ngIf="loan.status !== 'Виплачено'"
+              (click)="openModalPay(loan._id || '')"
+            >
+              Оплатити
+            </button>
+            <button
+              class="button-del"
+              *ngIf="loan.status === 'Виплачено'"
+              (click)="checkVisible(loan._id || '')"
+            >
+              Видалити
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <app-add-loan
+    *ngIf="isModalOpenLoan"
+    [isOpen]="isModalOpenLoan"
+    (closeModalLoan)="closeModalLoan()"
+    (loanSubmitted)="onLoanAdded($event)"
+  ></app-add-loan>
+  <app-add-payment
+    *ngIf="isModalOpenPay"
+    [loanId]="loanIdForPayment"
+    [isOpenPay]="isModalOpenPay"
+    (closeModalPay)="closeModalPay()"
+    (paySubmitted)="onPayAdded($event)"
+  ></app-add-payment>
 </div>
-
-

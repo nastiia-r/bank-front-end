@@ -1,7 +1,12 @@
 <div class="filter" [formGroup]="form">
   <div class="search-component">
     <div class="input-component">
-        <input class="input-client-name" formControlName="clientName" type="text" placeholder="   Пошук ім'я клієнта..." />
+      <input
+        class="input-client-name"
+        formControlName="clientName"
+        type="text"
+        placeholder="   Пошук ім'я клієнта..."
+      />
     </div>
 
     <div class="button-component">
@@ -10,8 +15,11 @@
     </div>
   </div>
 
-
-  <clr-side-panel class="left-side-panel" [(clrSidePanelOpen)]="opened" [clrSidePanelStaticBackdrop]="true">
+  <clr-side-panel
+    class="left-side-panel"
+    [(clrSidePanelOpen)]="opened"
+    [clrSidePanelStaticBackdrop]="true"
+  >
     <div class="side-panel-title">Фільтр</div>
     <div class="side-panel-body">
       <div>
@@ -37,21 +45,35 @@
           {{ loanType }}
         </div>
         <div class="input-component-modal">
-          <input class="input-modal" type="number" placeholder="Термін кредиту (місяці)" formControlName="term">
+          <input
+            class="input-modal"
+            type="number"
+            placeholder="Термін кредиту (місяці)"
+            formControlName="term"
+          />
         </div>
 
         <div class="input-component-modal">
-          <input class="input-modal" type="number" placeholder="Відсоток кредиту" formControlName="interestRate">
-
+          <input
+            class="input-modal"
+            type="number"
+            placeholder="Відсоток кредиту"
+            formControlName="interestRate"
+          />
         </div>
-
       </div>
 
       <div class="side-panel-footer">
-        <div class="button-component-modal" >
-          <button class="button-modal" type="submit" (click)="filter(); opened = false">Пошук</button>
+        <div class="button-component-modal">
+          <button
+            class="button-modal"
+            type="submit"
+            (click)="filter(); opened = false"
+          >
+            Пошук
+          </button>
         </div>
       </div>
-    </div>  </clr-side-panel> 
-
+    </div>
+  </clr-side-panel>
 </div>

@@ -1,58 +1,57 @@
 .container {
-    max-width: 600px;
-    margin: 20px auto;
-    text-align: center;
-    font-size: 1rem;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    height: 100vh !important;
+  max-width: 600px;
+  margin: 20px auto;
+  text-align: center;
+  font-size: 1rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  height: 100vh !important;
 }
 
 .client-list {
-    list-style: none;
-    padding: 0;
-
+  list-style: none;
+  padding: 0;
 }
 
-li{
-    font-size: 0.9rem;
+li {
+  font-size: 0.9rem;
 }
 
 .client-item {
-    padding: 10px;
-    background: #A1BAE3;
-    margin: 5px 0;
-    border-radius: 5px;
-    cursor: pointer;
+  padding: 10px;
+  background: #a1bae3;
+  margin: 5px 0;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .client-item:hover {
-    background: #2D336B;
-    color: #FFF2F2;
+  background: #2d336b;
+  color: #fff2f2;
 }
 
-.button-add-client{
-    background-color: #2D336B;
-    color: #FFF2F2;
-    width: 100%;
+.button-add-client {
+  background-color: #2d336b;
+  color: #fff2f2;
+  width: 100%;
 }
 
 @media (max-width: 768px) {
-    .container{
-        width: 90%;
-        font-size: 0.9rem;
-    }
+  .container {
+    width: 90%;
+    font-size: 0.9rem;
+  }
 
-    li{
-        font-size: 0.8rem;
-    }
+  li {
+    font-size: 0.8rem;
+  }
 }
 
 @media (max-width: 480px) {
-    .container{
-        width: 90%;
-        font-size: 0.8rem;
-    }
-    li{
-        font-size: 0.7rem;
-    }
+  .container {
+    width: 90%;
+    font-size: 0.8rem;
+  }
+  li {
+    font-size: 0.7rem;
+  }
 }

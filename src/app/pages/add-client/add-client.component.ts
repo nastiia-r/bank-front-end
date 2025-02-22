@@ -2,7 +2,11 @@ import { Component } from '@angular/core';
 import { HeaderComponent } from '../../components/header/header.component';
 import { ClarityModule } from '@clr/angular';
 import { ClientService } from '../../client-service/client.service';
-import { IClient, LoanTypeName, OwnershipType } from '../../client-model/client.model';
+import {
+  IClient,
+  LoanTypeName,
+  OwnershipType,
+} from '../../client-model/client.model';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -13,20 +17,20 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-client',
   standalone: true,
-  schemas: [CUSTOM_ELEMENTS_SCHEMA], 
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     HeaderComponent,
     ClarityModule,
     FormsModule,
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   templateUrl: './add-client.component.html',
   styleUrl: './add-client.component.css',
-  providers: [ClientService, DatePipe]
+  providers: [ClientService, DatePipe],
 })
 export class AddClientComponent {
-  loanTypeNames = Object.values(LoanTypeName); 
+  loanTypeNames = Object.values(LoanTypeName);
   ownershipTypes = Object.values(OwnershipType);
 
   client: IClient = {
@@ -35,20 +39,15 @@ export class AddClientComponent {
     address: '',
     phone: '',
     contactPerson: '',
-    loans: []
-};
+    loans: [],
+  };
 
-  constructor(
-    private clientService: ClientService,
-    private router: Router
-  ) { } 
+  constructor(private clientService: ClientService, private router: Router) {}
 
   onSubmit() {
     const clientToSend = { ...this.client };
 
-
     this.router.navigate(['/clients']);
-
 
     this.clientService.createClient(clientToSend).subscribe({
       next: (response) => {
@@ -58,12 +57,12 @@ export class AddClientComponent {
           address: '',
           phone: '',
           contactPerson: '',
-          loans: []
+          loans: [],
         };
       },
       error: (error) => {
         console.error('Помилка створення клієнта:', error);
-      }
+      },
     });
   }
 }

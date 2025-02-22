@@ -6,32 +6,29 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [
-    FormsModule,
-    CommonModule
-  ],
+  imports: [FormsModule, CommonModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.css',
 })
 export class LoginComponent {
-
-  email = "test@email.com";
-  password = "1234"
+  email = 'test@email.com';
+  password = '1234';
 
   userInputEmail = '';
-  userInputPassword= '';
+  userInputPassword = '';
 
   wrongUserInput: Boolean = false;
   constructor(private router: Router) {}
 
-  onLogin(){
-    if (this.email === this.userInputEmail && this.password === this.userInputPassword){
+  onLogin() {
+    if (
+      this.email === this.userInputEmail &&
+      this.password === this.userInputPassword
+    ) {
       this.wrongUserInput = false;
       this.router.navigate(['/home']);
-
     } else {
-      console.log("error")
-      this.wrongUserInput = true
+      this.wrongUserInput = true;
     }
   }
 }

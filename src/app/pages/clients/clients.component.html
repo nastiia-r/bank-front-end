@@ -1,13 +1,23 @@
 <app-header></app-header>
-<app-search (filterApplied)="onFilterApplied($event)"></app-search> 
+<app-search (filterApplied)="onFilterApplied($event)"></app-search>
 <div class="container">
-    <button routerLink="/newClient" class="button-add-client">Додати клієнта</button>
+  <button routerLink="/newClient" class="button-add-client">
+    Додати клієнта
+  </button>
 
-    <ul class="client-list">
-        <li *ngFor="let client of filteredClients.length > 0 ? filteredClients : (clients$ | async)" (click)="navigateToClientHome(client?._id)" class="client-item">
-            {{ client.clientName }}
-        </li>
-    </ul>
+  <ul class="client-list">
+    <li
+      *ngFor="
+        let client of filteredClients.length > 0
+          ? filteredClients
+          : (clients$ | async)
+      "
+      (click)="navigateToClientHome(client?._id)"
+      class="client-item"
+    >
+      {{ client.clientName }}
+    </li>
+  </ul>
 </div>
 
 <app-footer></app-footer>

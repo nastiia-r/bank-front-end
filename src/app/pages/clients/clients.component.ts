@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../../components/header/header.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { IClient } from '../../client-model/client.model';
-import { Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 import { ClientService } from '../../client-service/client.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -19,28 +19,24 @@ import { SearchComponent } from '../../components/search/search.component';
     CommonModule,
     HttpClientModule,
     RouterLink,
-    SearchComponent
+    SearchComponent,
   ],
   providers: [ClientService],
   templateUrl: './clients.component.html',
-  styleUrl: './clients.component.css'
+  styleUrl: './clients.component.css',
 })
-
-export class ClientsComponent implements OnInit { 
-  public clients$!: Observable<IClient[]>; 
+export class ClientsComponent implements OnInit {
+  public clients$!: Observable<IClient[]>;
   public filteredClients: IClient[] = [];
 
-  constructor(
-    private clientsService: ClientService,
-    private router: Router,
-  ) { }
+  constructor(private clientsService: ClientService, private router: Router) {}
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     this.clients$ = this.clientsService.client$;
   }
 
   onFilterApplied(clients: IClient[]): void {
-    this.filteredClients = clients; 
+    this.filteredClients = clients;
   }
 
   navigateToClientHome(clientId: string | undefined): void {
@@ -48,7 +44,7 @@ export class ClientsComponent implements OnInit {
       const encodedId = encodeURIComponent(clientId);
       this.router.navigate([`clients/${encodedId}`]);
     } else {
-      console.error("ID клієнта не знайдено.");
+      console.error('ID клієнта не знайдено.');
     }
   }
 

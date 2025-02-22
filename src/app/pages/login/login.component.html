@@ -1,17 +1,31 @@
 <div class="content">
-    <form>
-        <div class="container">
-            <header>
-                <h2>CreditControl</h2>
-                <p>Використовуйте свою електронну адресу та пароль</p>
-            </header>
-    
-            <input [ngClass]="{'wrongInput': wrongUserInput}"   class="form-input" name="email" type="email" [(ngModel)]="userInputEmail" placeholder="Email" required />
-            <input [ngClass]="{'wrongInput': wrongUserInput}"  class="form-input" name="password" type="password" [(ngModel)]="userInputPassword" placeholder="Password" required />
-            
-            <button type="button" (click)="onLogin()">Увійти</button>
-        </div>
-    </form>
+  <form>
+    <div class="container">
+      <header>
+        <h2>CreditControl</h2>
+        <p>Використовуйте свою електронну адресу та пароль</p>
+      </header>
+
+      <input
+        [ngClass]="{ wrongInput: wrongUserInput }"
+        class="form-input"
+        name="email"
+        type="email"
+        [(ngModel)]="userInputEmail"
+        placeholder="Email"
+        required
+      />
+      <input
+        [ngClass]="{ wrongInput: wrongUserInput }"
+        class="form-input"
+        name="password"
+        type="password"
+        [(ngModel)]="userInputPassword"
+        placeholder="Password"
+        required
+      />
+
+      <button type="button" (click)="onLogin()">Увійти</button>
+    </div>
+  </form>
 </div>
-
-
