@@ -1,0 +1,76 @@
+<app-header></app-header>
+
+<form #clientForm="ngForm">  
+
+    <div class="form-component">
+        <label  for="clientName">Назва клієнта *</label>
+        <div>
+            <div>
+                <input type="text" name="clientName" [(ngModel)]="client.clientName" placeholder="'БудМайстер'" required #clientName="ngModel" minlength="2"/>
+            </div>
+            <div *ngIf="clientName.invalid && (clientName.dirty || clientName.touched)" class="clr-control-error">
+                <div *ngIf="clientName.errors?.['required']">Обов'язкове поле!</div>
+                <div *ngIf="clientName.errors?.['minlength']">Мінімум 2 символи!</div>
+            </div>
+        </div>
+        </div>    
+        
+        
+    <div class="form-component">
+        <label for="ownershipType">Тип власності *</label>
+        <div>
+            <select [(ngModel)]="client.ownershipType" name="ownershipType" required #ownershipType="ngModel">
+                <option value="" disabled>Оберіть тип власності</option>
+                <option *ngFor="let type of ownershipTypes" [ngValue]="type">{{ type }}</option>
+            </select>
+            <div *ngIf="ownershipType.invalid && (ownershipType.dirty || ownershipType.touched)" class="clr-control-error">
+                Обов'язкове поле!
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-component">
+        <label for="address">Адреса *</label>
+        <div>
+            <div>
+                <input name="address" type="text" [(ngModel)]="client.address" placeholder="м. Київ, вул. Хрещатик, 1" required #address="ngModel" />
+            </div>
+            <div *ngIf="address.invalid && (address.dirty || address.touched)" class="clr-control-error">
+                Обов'язкове поле!
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-component">
+        <label for="phone">Телефон *</label>
+    <div>
+        <div>
+            <input name="phone" [(ngModel)]="client.phone" placeholder="+3801234567890" type="tel" required #phone="ngModel" />
+        </div>
+        <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="clr-control-error">
+            Обов'язкове поле!
+        </div>
+    </div>
+    </div>
+
+
+    <div class="form-component">
+        <label class="label-form" for="contactPerson">Контактна особа*</label>
+        <div>
+            <div>
+                <input type="text" name="contactPerson" [(ngModel)]="client.contactPerson" placeholder="Іван Петренко" required #contactPerson="ngModel"/>
+            </div>
+            <div *ngIf="contactPerson.invalid && (contactPerson.dirty || contactPerson.touched)" class="clr-control-error">
+                Обов'язкове поле!
+            </div>
+        </div>
+    </div>            
+     
+    <div class="button-component">
+        <button type="submit" routerLink="/clients"  [disabled]="clientForm.invalid" (click)="onSubmit()">Зберегти</button>  
+    </div>
+
+</form>
+
+
+

@@ -1,0 +1,97 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Verdana, sans-serif;
+}
+
+form{
+    padding: 1rem;
+}
+
+.clr-control-error{
+    color: #92132c
+}
+
+.form-component{
+    display: flex;
+    flex-direction: row;
+    padding: 1.5rem 1rem;
+    font-size: 1.2rem;
+}
+
+label{
+    width: 250px;
+    padding-right: 2rem;
+}
+
+select, input{
+    width: 350px;
+    font-size: 1rem;
+    outline: none;
+}
+
+input::placeholder {
+    color: #4C585B;
+}
+
+input{
+    border: none;
+    border-bottom: 2px solid #4C585B;
+}
+
+input:focus {
+    border-bottom: 2px solid #7886C7;
+}
+
+.button-component{
+    display: flex;
+    flex-direction: row;
+    padding: 1.5rem 1rem;
+}
+
+button{
+    width: 150px;
+    height: 35px;
+    margin-right: 15px;
+    border: none;
+    border-radius: 5%;
+    background-color: #2D336B;
+    color: #FFF2F2;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    input, select {
+        font-size: 0.9rem; 
+    }
+
+    .form-component{
+        flex-direction: column;
+        font-size: 1rem;
+    }
+
+    button{
+        font-size: 1rem;
+    }
+
+    label{
+        padding-bottom: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    input, select {
+        font-size: 0.8rem; 
+        width: 90%;
+    }
+
+    button{
+        font-size: 0.9rem;
+    }
+
+    .form-component{
+        font-size: 0.9rem;
+    }
+
+}

@@ -1,0 +1,367 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.hero-section, .loan-section, .calculate-section, .advantages-section {
+    margin: 3rem 1rem 3rem 1rem;
+}
+
+.clr-control-error{
+    color: #92132c
+}
+
+.hero-description h2 {
+    font-size: 2.2rem !important;
+    font-weight: bold;
+    color: #2D336B;
+}
+
+.hero-section{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #2D336B;
+    justify-content: space-around;
+}
+
+.hero-description {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: center;
+}
+
+.img-bank {
+    width: 100%; 
+    height: auto; 
+    object-fit: contain; 
+    max-width: 600px;
+}
+
+.hero-section > p{
+    display: none;
+}
+
+h4 {
+    font-size: 1.5rem !important;
+    font-weight: normal;
+    text-align: center;
+    margin-top: 20px;
+}
+h5 {
+    font-size: 1.2rem !important;
+    font-weight: normal;
+}
+
+p {
+    font-size: 1rem !important;
+}
+
+.loan-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.loan-sba, .loan-long-term, .loan-equipment, .loan-government-business, .loan-microloans {
+    flex: 1 1 30%; 
+    padding: 20px;
+    background-color: #E7F0FF;
+    border-radius: 5%;
+}
+.loan-sba h4, .loan-long-term h4, .loan-equipment h4, .loan-government-business h4, .loan-microloans h4{
+    color: #2D336B;
+}
+
+.calculate-section, .advantages-item-colection{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.hero-section, .loan-section, .advantages-section, .calculate-section {
+    padding: 20px;
+}
+
+.calculate-result, .calculete-input{
+    width: 50%;
+}
+
+.calculete-input{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.advantages-item h4{
+    color: #2D336B;
+}
+
+.loan-name, .loan-term, .loan-amount{
+    display: flex;
+    padding: 5px;
+}
+
+input, select{
+    width: 50%;
+    border-color: #2D336B;
+    font-size: 1.1rem;
+}
+
+input::placeholder {
+    color: #4C585B;
+}
+
+input{
+    border: none;
+    border-bottom: 2px solid #4C585B;
+    outline: none;
+}
+
+input:focus {
+    border-bottom: 2px solid #2D336B;
+}
+
+label{
+    display: flex;
+    width: 30%;
+    font-size: 1.3rem !important;
+}
+
+.calculate-result p{
+    margin-top: 0 !important;
+    padding: 5px !important;
+}
+
+.calculate-result h4 {
+    margin-bottom: 15px;
+}
+
+.calculate-form{
+    margin-top: 24px;
+}
+
+button{
+    width: 150px;
+    height: 35px;
+    margin-top: 24px;
+    border: none;
+    border-radius: 5%;
+    background-color: #2D336B;
+    color: #FFF2F2;
+    font-size: 1.2rem !important;
+}
+
+cds-icon {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+}
+
+
+.advantages-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    text-wrap: pretty;
+    padding: 15px;
+    width: 30%;
+}
+
+.advantages-item-colection{
+    margin-top: 30px;
+}
+
+.advantages-item p{
+    padding-top: 10px !important;
+    margin: 0px !important;
+}
+
+
+@media (max-width: 1000px) {
+
+    .hero-description h2 {
+        font-size: 1.8rem !important;
+    }
+    
+    h4 {
+        font-size: 1.2rem !important;
+        margin-top: 15px !important;
+    }
+    h5 {
+        font-size: 0.9rem !important;
+    }
+    
+    p {
+        font-size: 0.6rem !important;
+    }
+    label{
+        display: flex;
+        width: 30%;
+        font-size: 1rem !important;
+    }
+    
+    input, select{
+        font-size: 0.8rem !important;
+    }
+
+    .img-bank {
+        max-width: 500px;
+    }
+    .hero-section, .loan-section, .calculate-section, .advantages-section {
+        margin: 2rem 0.5rem 2rem 0.5rem;
+    }
+    
+    .calculate-result{
+        width: 45%;
+    }
+
+    .calculete-input{
+        width: 55%;
+    }
+
+    .calculate-section{
+        flex-direction: column;
+    }
+    .calculete-input, .calculate-result{
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 768px){
+    .loan-sba, .loan-long-term, .loan-equipment, .loan-government-business, .loan-microloans {
+        flex: 1 1 45%; 
+    }
+
+
+    .hero-section > p{
+        display: flex;
+        margin: 0;
+    }
+
+    .hero-section{
+        flex-direction: column; 
+        margin-top: 0;
+    }
+
+    .hero-description{
+        width: 100%;
+    }
+
+    .hero-description > p {
+        display: none;
+    }
+
+    .hero-description h2 {
+        font-size: 1.4rem !important;
+        margin-top: 0;
+    }
+    
+    h4 {
+        font-size: 1rem !important;
+        margin-top: 15px;
+    }
+    h5 {
+        font-size: 0.7rem !important;
+    }
+    
+    p {
+        font-size: 0.7rem !important;
+    }
+    label{
+        display: flex;
+        width: 30%;
+        font-size: 0.9rem !important;
+    }
+    
+    input, select{
+        font-size: 0.7rem !important;
+    }
+
+    .img-bank {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .calculate-section{
+        flex-direction: column;
+    }
+    .calculete-input, .calculate-result{
+        width: 100%;
+    }
+
+    .calculate-result p, .advantages-item p {
+        margin-top: 0 !important;
+        padding: 5px;
+    }
+    
+    button{
+        margin-bottom: 20px;
+        width: 120px;
+        height: 35px;
+        font-size: 1rem !important;
+    }
+
+
+}
+
+@media (max-width: 480px) {
+
+    .loan-sba, .loan-long-term, .loan-equipment, .loan-government-business, .loan-microloans {
+        flex: 1 1 100%; 
+    }
+
+    .calculate-section{
+        flex-direction: column;
+    }
+    .calculete-input, .calculate-result{
+        width: 100%;
+    }
+
+    .advantages-item-colection{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .advantages-item {
+        display: flex;
+        width: 100%;
+
+
+    }
+
+    button{
+        width: 100px;
+        height: 30px;
+        font-size: 0.9rem !important;
+    }
+
+    h2 {
+        font-size: 1.3rem !important;
+    }
+
+    h4 {
+        font-size: 1.1rem !important;
+    }
+
+    h5 {
+        font-size: 0.9rem !important;
+    }
+
+    p, label, input, select {
+        font-size: 0.85rem !important;
+    }
+
+    .calculate-result p, .advantages-item p {
+        margin-top: 0 !important;
+        padding: 5px;
+    }
+}
+
+
+

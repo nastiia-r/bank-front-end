@@ -1,0 +1,142 @@
+
+<app-header></app-header>
+<div class="hero-section">
+    <div class="hero-description">
+        <h2>Ваш надійний партнер для фінансових можливостей!</h2>
+        <p>Ми пропонуємо різноманітні кредити для вашого бізнесу, дому та особистих потреб. Наші умови — це простота і прозорість на кожному кроці.</p>
+    </div>
+    <img class="img-bank" src="../../../assets/img/bank.jpg" alt="bank">
+    <p>Ми пропонуємо різноманітні кредити для вашого бізнесу, дому та особистих потреб. Наші умови — це простота і прозорість на кожному кроці.</p>
+
+</div>
+
+<div class="loan-section">
+
+    <div class="loan-sba">
+        <h4><strong>Фінансування малого бізнесу</strong></h4>
+        <h5><strong>Сума:</strong> до 500,000 грн</h5>
+        <h5><strong>Термін:</strong> до 5 років</h5>
+        <h5><strong>Ставка:</strong> 0.5% на місяць (6% річних)</h5>
+        <p>Цей кредит підходить для малих підприємств, які потребують фінансової допомоги для розвитку чи стартапів. Має пільгові умови, швидке оформлення, і може бути використаний для інвестицій у розширення бізнесу.</p>
+    </div>
+
+    <div class="loan-long-term">
+        <h4><strong>Довгостроковий кредит</strong></h4>
+        <h5><strong>Сума:</strong> до 2 млн грн</h5>
+        <h5><strong>Термін:</strong> до 10 років</h5>
+        <h5><strong>Ставка:</strong> 0.4% на місяць (4.8% річних)</h5>
+        <p>Кредит для великих покупок або інвестицій, таких як купівля нерухомості або капітальні витрати. Довгий термін дозволяє виплачувати кредит на більш зручних умовах.</p>
+    </div>
+
+    <div class="loan-equipment">
+        <h4><strong>Кредит на обладнання</strong></h4>
+        <h5><strong>Сума:</strong> до 1 млн грн</h5>
+        <h5><strong>Термін:</strong> до 3 років</h5>
+        <h5><strong>Ставка:</strong> 0.6% на місяць (7.2% річних)</h5>
+        <p>Кредит для бізнесу, який потребує нового обладнання. Може бути використаний для покупок, необхідних для виробничих потреб чи модернізації бізнесу.</p>
+    </div>
+
+    <div class="loan-government-business">
+        <h4><strong>Державний бізнес-кредит</strong></h4>
+        <h5><strong>Сума:</strong> до 1 млн грн</h5>
+        <h5><strong>Термін:</strong> до 7 років</h5>
+        <h5><strong>Ставка:</strong> 0.3% на місяць (3.6% річних)</h5>
+        <p>Спеціальні кредити, що надаються за підтримки держави для розвитку бізнесу. Вони мають вигідні умови та можуть бути використані для підприємств, які працюють у сфері соціально важливих проектів.</p>
+    </div>
+
+    <div class="loan-microloans">
+        <h4><strong>Мікрокредит</strong></h4>
+        <h5><strong>Сума:</strong> до 100,000 грн</h5>
+        <h5><strong>Термін:</strong> до 2 років</h5>
+        <h5><strong>Ставка:</strong> 0.75% на місяць (9% річних)</h5>
+        <p>Невеликі кредити, ідеальні для нових підприємців або для покриття поточних потреб. Вони надаються на коротший термін і мають високий відсоток, але можуть стати відмінним стартом для нового бізнесу.</p>
+    </div>
+
+</div>
+
+<div class="calculate-section">
+    <div class="calculete-input">
+        <div class="calculate-form">
+            <form #calculateForm="ngForm">  
+                <div class="loan-name">
+                    <label for="loanTypeName">Тип кредиту *</label>
+                    <select name="loanTypeName" [(ngModel)]="selectedType" required #loanTypeName="ngModel">
+                        <option value="" disabled>Оберіть тип кредиту</option> 
+                        <option *ngFor="let name of loanTypeNames" [ngValue]="name">{{ name }}</option>
+                    </select>
+                    <div *ngIf="loanTypeName.invalid && (loanTypeName.dirty || loanTypeName.touched)" class="clr-control-error">
+                        Обов'язкове поле!
+                    </div>
+                </div>
+                <div class="loan-term">
+                    <label for="term">Термін *</label>
+                    <div>
+                        <input id="term" name="term" placeholder="12" type="number" [(ngModel)]="selectedTerm" required #term="ngModel" min="1"/>
+
+                    </div>
+                    <div *ngIf="term.invalid && (term.dirty || term.touched)" class="clr-control-error">
+                        <div *ngIf="term.errors?.['required']">Обов'язкове поле!</div>
+                        <div *ngIf="term.errors?.['min']">Значення має бути більше 0!</div>
+                    </div>
+                </div>
+    
+                <div class="loan-amount">
+                    <label for="loanAmount">Сума *</label>
+                    <div>
+                        <input id="loanAmount" name="loanAmount" placeholder="500000" type="number" [(ngModel)]="selectedAmount" required #loanAmount="ngModel" min="1"/>
+
+                    </div>
+                    <div *ngIf="loanAmount.invalid && (loanAmount.dirty || loanAmount.touched)" class="clr-control-error">
+                        <div *ngIf="loanAmount.errors?.['required']">Обов'язкове поле!</div>
+                        <div *ngIf="loanAmount.errors?.['min']">Значення має бути більше 0!</div>
+                    </div>
+                </div>
+                <div *ngIf="errorMessage" class="clr-control-error">
+                    {{ errorMessage }}
+                </div>               
+                <div class="calculate-button">
+                    <button [disabled]="calculateForm.invalid" (click)="calculateLoan()">Порахувати</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="calculate-result" *ngIf="monthTotal || oneTotal">
+        <h4><strong>Щомісячний платіж:</strong></h4>
+        <p>Загальна сума до сплати = {{monthTotal}}</p>
+        <p>Щомісячний платіж = {{monthAmount}}</p>
+        <h4><strong>Одноразовий платіж:</strong></h4>
+        <p>Загальна сума до сплати = {{oneTotal}}</p>
+
+
+    </div>
+</div>
+
+<div class="advantages-section">
+    <h4><strong>Чому ми?</strong></h4>
+    <div class="advantages-item-colection">
+        <div class="advantages-item">
+            <cds-icon shape="clock"></cds-icon>
+            <h4>Швидке схвалення</h4>
+            <p>Кредит за лічені хвилини.</p>
+        </div>
+    
+        <div class="advantages-item">
+            <cds-icon shape="happy-face"></cds-icon>
+            <h4>Гнучкі умови</h4>
+            <p>Підберемо ідеальний кредит для вас.</p>
+        </div>
+    
+        <div class="advantages-item">
+            <cds-icon shape="clipboard"></cds-icon>
+            <h4>Прозорі умови</h4>
+            <p>Без прихованих платежів і комісій.</p>
+        </div>
+    </div>
+   
+</div>
+
+
+
+
+<app-footer></app-footer>

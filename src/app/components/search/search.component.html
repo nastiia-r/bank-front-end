@@ -1,0 +1,57 @@
+<div class="filter" [formGroup]="form">
+  <div class="search-component">
+    <div class="input-component">
+        <input class="input-client-name" formControlName="clientName" type="text" placeholder="   Пошук ім'я клієнта..." />
+    </div>
+
+    <div class="button-component">
+      <button type="submit" (click)="filter()">Пошук</button>
+      <button type="button" (click)="opened = true">Фільтр</button>
+    </div>
+  </div>
+
+
+  <clr-side-panel class="left-side-panel" [(clrSidePanelOpen)]="opened" [clrSidePanelStaticBackdrop]="true">
+    <div class="side-panel-title">Фільтр</div>
+    <div class="side-panel-body">
+      <div>
+        <p class="modal-p">Виберіть тип власності:</p>
+        <div *ngFor="let ownership of OwnershipType">
+          <input
+            type="checkbox"
+            [value]="ownership"
+            (change)="onOwnershipChange($event)"
+          />
+          {{ ownership }}
+        </div>
+      </div>
+
+      <div>
+        <p class="modal-p">Виберіть тип кредиту:</p>
+        <div *ngFor="let loanType of LoanTypeName">
+          <input
+            type="checkbox"
+            [value]="loanType"
+            (change)="onLoanTypeChange($event)"
+          />
+          {{ loanType }}
+        </div>
+        <div class="input-component-modal">
+          <input class="input-modal" type="number" placeholder="Термін кредиту (місяці)" formControlName="term">
+        </div>
+
+        <div class="input-component-modal">
+          <input class="input-modal" type="number" placeholder="Відсоток кредиту" formControlName="interestRate">
+
+        </div>
+
+      </div>
+
+      <div class="side-panel-footer">
+        <div class="button-component-modal" >
+          <button class="button-modal" type="submit" (click)="filter(); opened = false">Пошук</button>
+        </div>
+      </div>
+    </div>  </clr-side-panel> 
+
+</div>

@@ -21,12 +21,31 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
+                {
+                    "glob": "**/*",
+                    "input": "src/assets",
+                    "output": "/assets"
+                },
+                {
+                    "glob": "**/*.css",
+                    "input": "node_modules/@cds/core/global",
+                    "output": "/assets/cds-core"
+                },
+                {
+                    "glob": "**/*.css", 
+                    "input": "node_modules/@cds/core/styles",
+                    "output": "/assets/cds-core/styles"
+                },
+                {
+                    "glob": "**/*.css",
+                    "input": "node_modules/@clr/ui",
+                    "output": "/assets/clr-ui"
+                }
             ],
             "styles": [
+              "node_modules/@cds/core/global.min.css",
+              "node_modules/@cds/core/styles/theme.dark.min.css",
+              "node_modules/@clr/ui/clr-ui.min.css",
               "src/styles.css"
             ],
             "scripts": []

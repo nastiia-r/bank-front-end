@@ -1,0 +1,138 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.search-component {
+    display: flex;
+    flex-direction: row;
+}
+
+.input-client-name{
+    width: 400px;
+    height: 35px;
+    border-radius: 5%;
+}
+
+input{
+    border: none;
+    background-color: #A1BAE3;
+    border-bottom: 2px solid #4C585B !important;
+    outline: none;
+}
+
+.input-client-name{
+    background-color: #fff;
+}
+
+input:focus {
+    border-bottom: 2px solid #2D336B !important;
+}
+
+.input-component{
+    padding: 0.5rem 0.75rem;
+}
+
+.button-component{
+    display: flex;
+    flex-direction: row;
+    padding: 0.5rem 0.75rem;
+}
+
+button{
+    width: 100px;
+    height: 35px;
+    margin-right: 15px;
+    border: none;
+    border-radius: 5%;
+    background-color: #2D336B;
+    color: #FFF2F2;
+}
+
+.input-modal{
+    width: 300px;
+}
+
+.modal-content{
+    background-color: #A1BAE3 ;
+
+}
+
+.modal-title-wrapper{
+    font-size: 1.5rem;
+}
+
+.modal-header--accessible .close{
+    margin-top: 0.6rem;
+}
+
+.modal-header--accessible{
+    padding: 0;
+}
+
+.input-component-modal{
+    margin-top: 0.75rem;
+}
+
+clr-side-panel {
+    font-size: 1.5rem; 
+}
+
+clr-side-panel * {
+    font-size: 1rem; 
+    padding-top: 5px;
+}
+
+.modal-p {
+    padding-bottom: 10px;
+}
+
+.modal-footer, .side-panel-footer {
+    display: flex;
+    justify-content: flex-start;
+}
+  
+.button-component-modal{
+    display: flex;
+    flex-direction: row;
+    padding: 0.75rem 0;
+}
+
+.button-modal{
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+
+    .search-component{
+        flex-direction: column;
+        font-size: 0.9rem;
+    }
+
+    .button-component{
+        padding-top: 0;
+    }
+
+    .modal-lg {
+      width: 100vw;
+      height: 100vh;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .search-component{
+        font-size: 0.8rem;
+    }
+
+    .input-client-name {
+        width: 90%; 
+    }
+    .modal-lg {
+      width: 100vw;
+      height: 100vh;
+      border-radius: 0;
+    }
+  }
+  

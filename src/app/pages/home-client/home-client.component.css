@@ -1,0 +1,169 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Verdana, sans-serif;
+}
+
+.client-item{
+    display: flex;
+    flex-direction: row;
+    font-size: 1rem;
+}
+
+.info-client{
+    width: 30%;
+}
+
+.info-loan{
+    width: 70%;
+}
+
+li {
+    list-style-type: none;
+}
+
+.not-visible{
+    display: none;
+}
+
+.info-payments, .info-penalties {
+    max-height: 180px; 
+    width: 300px;
+    overflow-y: auto;
+    padding: 10px;
+    margin-left: 10px;
+    border: 1px solid #ccc;
+    margin-top: 10px; 
+}
+
+.button-add-loan{
+    width: 200px;
+    height: 35px;
+    margin-right: 15px;
+    border: none;
+    border-radius: 5%;
+    background-color: #2D336B;
+    color: #FFF2F2;
+}
+
+.button-pay{
+    width: 100px;
+    height: 35px;
+    border: none;
+    border-radius: 5%;
+    background-color: #2D336B;
+    color: #FFF2F2;
+}
+
+.button-del{
+    width: 100px;
+    height: 35px;
+    border: none;
+    border-radius: 5%;
+    background-color: #92132c;
+    color: #FFF2F2;
+}
+
+h2{
+    text-align: center;
+}
+
+p{
+    margin: 0.5rem;
+}
+
+.loan-component{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; 
+    gap: 5px; 
+}
+
+.loan-component-info{
+    flex: 1 1 350px;
+    max-width: 500px;
+    min-width: 350px;
+    border: 1px solid #DDE6ED;
+    padding: 10px;
+    margin-top: 10px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    font-size: 0.8rem;
+}
+
+ul{
+    display: flex;
+    flex-direction: column;
+}
+
+button{
+    margin: 1rem 0.5rem;
+}
+
+.done-status{
+    background-color: #DDE6ED;
+}
+
+.penalties-p, .payments-p {
+    margin: 24px 10px; 
+}
+
+.penalties-p p, .payments-p p {
+    margin: 0.3rem; 
+}
+
+
+@media (max-width: 1025px) {
+    .info-client{
+        width: 40%;
+    }
+    
+    .info-loan{
+        width: 60%;
+    }
+
+    .client-item{
+        font-size: 0.9rem;
+    }
+
+    .loan-component-info{
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 768px){
+    .client-item{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .info-client{
+        width: 90%;
+        margin: 0 auto;
+        padding: 16px;
+    }
+    
+    .info-loan{
+        width: 90%;
+        margin: 0 auto;
+        padding: 16px;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .client-item{
+        font-size: 0.8rem;
+    }
+
+    .loan-component-info{
+        font-size: 0.7rem;
+        min-width: 280px;
+    }
+    
+    .info-payments, .info-penalties{
+        width: 90%;
+    }
+}

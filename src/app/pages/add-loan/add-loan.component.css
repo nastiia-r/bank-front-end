@@ -1,0 +1,134 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+ .modal-dialog-form{
+  background-color: #A1BAE3 ;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 780px;
+  padding: 0 !important;
+  margin: 0 !important;
+  
+}
+
+.modal-dialog .modal-content{
+  width: 768px;
+}
+
+.modal-title-form, .modal-header{
+  font-size: 1.5rem;
+  width: 100%;
+}
+
+.form-control{
+  display: flex;
+  flex-direction: row;
+  padding: 0.5rem;
+}
+
+label{
+  width: 250px;
+  padding-right: 2rem;
+}
+
+.clr-control-error{
+  color: #92132c
+}
+
+select, input{
+  width: 350px;
+  font-size: 1rem;
+  outline: none;
+}
+
+input::placeholder {
+  color: #4C585B;
+}
+
+input{
+  border: none;
+  border-bottom: 2px solid #4C585B !important;
+}
+
+input:focus {
+  border-bottom: 2px solid #2D336B !important;
+}
+
+.input-radio{
+  width: 13px;
+}
+
+
+.modal-content-form{
+  width: 1000px;
+  
+}
+
+.button-navigate{
+  width: 150px;
+  height: 35px;
+  margin-right: 15px;
+  border: none;
+  border-radius: 5%;
+  background-color: #2D336B;
+  color: #FFF2F2;
+  font-size: 1.2rem;
+}
+
+
+.close {
+  font-size: 24px;
+  cursor: pointer;
+}
+  
+@media (max-width: 768px) {
+  .modal-dialog-form .modal-content-form{
+    width: 90%;
+    padding-right: 0px;
+
+  }
+  .label-radio{
+    display: flex;
+    flex-direction: column;
+  }
+  .modal-form{
+    font-size: 0.9rem;
+  }
+
+  .modal-dialog-form{
+    width: 90%;
+
+  }
+  .form-control{
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+  }
+
+  .button-navigate{
+    font-size: 0.9rem;
+  }
+
+}
+
+@media (max-width: 480px) {
+  input, select {
+    font-size: 0.8rem; 
+    width: 90%;
+  }
+
+  .button-navigate{
+    font-size: 0.8rem;
+  }
+
+  .modal-body{
+      font-size: 0.8rem;
+  }
+
+}
