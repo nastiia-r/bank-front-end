@@ -31,6 +31,12 @@ import { LoanCalculatesService } from '../../client-service/loan-calculate.servi
   encapsulation: ViewEncapsulation.None,
 })
 export class AddLoanComponent {
+  constructor(
+    private route: ActivatedRoute,
+    private clientService: ClientService,
+    private loanCalculateService: LoanCalculatesService
+  ) {}
+
   @Input() isOpen: boolean = false;
   @Output() closeModalLoan = new EventEmitter<void>();
   @Output() loanSubmitted = new EventEmitter<ILoan>();
@@ -159,12 +165,6 @@ export class AddLoanComponent {
     payments: [],
     penalties: [],
   };
-
-  constructor(
-    private route: ActivatedRoute,
-    private clientService: ClientService,
-    private loanCalculateService: LoanCalculatesService
-  ) {}
 
   ngOnInit(): void {
     this.clientId = this.route.snapshot.paramMap.get('id');

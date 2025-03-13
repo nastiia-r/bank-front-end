@@ -25,6 +25,7 @@ export class LoginComponent {
       this.email === this.userInputEmail &&
       this.password === this.userInputPassword
     ) {
+      localStorage.setItem('isLoggedIn', 'true');
       this.wrongUserInput = false;
       this.router.navigate(['/home']);
     } else {

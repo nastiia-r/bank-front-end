@@ -32,6 +32,11 @@ export class AddPaymentComponent {
   clientId: string | null = null;
   @Input() loanId: string | null = null;
 
+  constructor(
+    private route: ActivatedRoute,
+    private clientService: ClientService
+  ) {}
+
   recommendedPayment: number = 0;
   penaltyPayment: number = 0;
 
@@ -89,11 +94,6 @@ export class AddPaymentComponent {
     date: null,
     amount: 0,
   };
-
-  constructor(
-    private route: ActivatedRoute,
-    private clientService: ClientService
-  ) {}
 
   ngOnInit(): void {
     this.clientId = this.route.snapshot.paramMap.get('id');
